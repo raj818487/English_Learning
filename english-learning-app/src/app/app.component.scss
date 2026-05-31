@@ -1,0 +1,157 @@
+.page {
+  background: var(--color-parchment);
+}
+
+.container {
+  width: min(1200px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 6rem 0;
+}
+
+.overline {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-stone-gray);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: 'Anthropic Serif', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  color: var(--color-near-black);
+}
+
+h1 {
+  max-width: 16ch;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: 1.1;
+}
+
+.lead {
+  margin: 1.2rem 0 0;
+  max-width: 62ch;
+  font-size: 1.25rem;
+  color: var(--color-olive-gray);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 0;
+  border-radius: var(--radius-12);
+  font: 500 1rem/1.25 'Anthropic Sans', 'Inter', Arial, sans-serif;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-ring);
+}
+
+.btn-brand {
+  background: var(--color-terracotta);
+  color: var(--color-ivory);
+}
+
+.btn-sand {
+  background: var(--color-warm-sand);
+  color: var(--color-charcoal-warm);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-light {
+  border-top: 1px solid var(--border-cream);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4.2vw, 3.25rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.card-grid,
+.model-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card,
+.model-card {
+  border-radius: var(--radius-16);
+  padding: 1.5rem;
+  border: 1px solid var(--border-cream);
+  box-shadow: var(--shadow-whisper);
+}
+
+.card {
+  background: var(--color-ivory);
+}
+
+h3 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.card p,
+.model-card p {
+  margin: 0;
+  color: var(--color-olive-gray);
+}
+
+.section-dark {
+  background: var(--color-near-black);
+}
+
+.section-dark h2,
+.section-dark h3 {
+  color: var(--color-ivory);
+}
+
+.model-card {
+  background: var(--color-dark-surface);
+  border-color: var(--color-dark-surface);
+}
+
+.section-dark .model-card p {
+  color: var(--color-warm-silver);
+}
+
+@media (max-width: 991px) {
+  .card-grid,
+  .model-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .container {
+    width: min(1200px, calc(100% - 1.5rem));
+  }
+
+  .card-grid,
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+}
