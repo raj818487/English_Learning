@@ -10,18 +10,25 @@ public sealed class ContentDeduplicator : IContentDeduplicator
 
     public async Task<bool> IsDuplicateAsync(Content candidate, IEnumerable<Content> existing, CancellationToken cancellationToken = default)
     {
-        for (var attempt = 0; attempt < MaxAttempts; attempt++)
+        for (var attempt = 1; attempt <= MaxAttempts; attempt++)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            if (HasExactDuplicate(candidate, existing) ||
-                HasSemanticDuplicate(candidate, existing) ||
-                HasMetadataDuplicate(candidate, existing))
+            try
             {
-                return true;
-            }
+                cancellationToken.ThrowIfCancellationRequested();
 
-            await Task.Yield();
+                if (HasExactDuplicate(candidate, existing) ||
+                    HasSemanticDuplicate(candidate, existing) ||
+                    HasMetadataDuplicate(candidate, existing))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch when (attempt < MaxAttempts)
+            {
+                await Task.Delay(TimeSpan.FromMilliseconds(50 * attempt), cancellationToken);
+            }
         }
 
         return false;

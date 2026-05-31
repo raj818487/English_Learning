@@ -4,7 +4,9 @@ public sealed class LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddl
 {
     public async Task InvokeAsync(HttpContext context)
     {
-        logger.LogInformation("Handling request {Method} {Path}", context.Request.Method, context.Request.Path);
+        var method = context.Request.Method.ReplaceLineEndings(string.Empty).Trim();
+        var path = (context.Request.Path.Value ?? "/").ReplaceLineEndings(string.Empty).Trim();
+        logger.LogInformation("Handling request {Method} {Path}", method, path);
         await next(context);
     }
 }
