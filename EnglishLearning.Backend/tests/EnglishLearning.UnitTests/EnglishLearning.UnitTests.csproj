@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\EnglishLearning.Application\EnglishLearning.Application.csproj" />
     <ProjectReference Include="..\..\src\EnglishLearning.Domain\EnglishLearning.Domain.csproj" />
+    <ProjectReference Include="..\..\src\EnglishLearning.Infrastructure\EnglishLearning.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

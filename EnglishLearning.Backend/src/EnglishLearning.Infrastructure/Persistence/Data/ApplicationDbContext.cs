@@ -18,7 +18,14 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Content>().HasDiscriminator(c => c.ContentType);
+        modelBuilder.Entity<Content>()
+            .HasDiscriminator(c => c.ContentType)
+            .HasValue<Vocabulary>(Domain.Enums.ContentTypeEnum.Vocabulary)
+            .HasValue<GrammarRule>(Domain.Enums.ContentTypeEnum.GrammarRule)
+            .HasValue<Sentence>(Domain.Enums.ContentTypeEnum.Sentence)
+            .HasValue<Exercise>(Domain.Enums.ContentTypeEnum.Exercise)
+            .HasValue<InterviewQuestion>(Domain.Enums.ContentTypeEnum.InterviewQuestion)
+            .HasValue<ConversationScenario>(Domain.Enums.ContentTypeEnum.ConversationScenario);
         modelBuilder.Entity<ContentHash>().HasIndex(x => x.Hash).IsUnique();
         base.OnModelCreating(modelBuilder);
     }
