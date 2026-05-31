@@ -18,4 +18,30 @@
       <p>Track learning streaks, completion rates, and performance statistics.</p>
     </article>
   </section>
+
+  <section class="daily-words-section">
+    <h2>Daily Vocabulary (50 unique words)</h2>
+    <p>Select a date, generate words, and view them date-wise.</p>
+
+    <div class="daily-words-controls">
+      <label for="daily-date">Date</label>
+      <input id="daily-date" type="date" [(ngModel)]="selectedDate" />
+      <button type="button" (click)="generateWords()" [disabled]="isLoading">Generate 50 Words</button>
+      <button type="button" (click)="loadWordsByDate()" [disabled]="isLoading">Load by Date</button>
+    </div>
+
+    @if (isLoading) {
+      <p>Loading...</p>
+    }
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <ol class="daily-words-list">
+      @for (word of dailyWords; track word.id) {
+        <li>{{ word.word }}</li>
+      }
+    </ol>
+  </section>
 </main>

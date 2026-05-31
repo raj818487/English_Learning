@@ -18,12 +18,14 @@ public static class ServiceConfiguration
 
         services.AddScoped<IRepository<Content>, BaseRepository<Content>>();
         services.AddScoped<IRepository<Topic>, BaseRepository<Topic>>();
+        services.AddScoped<IRepository<DailyVocabularyWord>, BaseRepository<DailyVocabularyWord>>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IContentDeduplicator, ContentDeduplicator>();
 
         services.AddScoped<IDeduplicationService, DeduplicationService>();
         services.AddScoped<IContentService, ContentService>();
         services.AddScoped<ITopicService, TopicService>();
+        services.AddScoped<IDailyVocabularyService, DailyVocabularyService>();
 
         return services;
     }

@@ -13,6 +13,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
     public DbSet<Exercise> Exercises => Set<Exercise>();
     public DbSet<InterviewQuestion> InterviewQuestions => Set<InterviewQuestion>();
     public DbSet<ConversationScenario> ConversationScenarios => Set<ConversationScenario>();
+    public DbSet<DailyVocabularyWord> DailyVocabularyWords => Set<DailyVocabularyWord>();
     public DbSet<UserProgress> UserProgresses => Set<UserProgress>();
     public DbSet<ContentHash> ContentHashes => Set<ContentHash>();
 
@@ -27,6 +28,8 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
             .HasValue<InterviewQuestion>(Domain.Enums.ContentTypeEnum.InterviewQuestion)
             .HasValue<ConversationScenario>(Domain.Enums.ContentTypeEnum.ConversationScenario);
         modelBuilder.Entity<ContentHash>().HasIndex(x => x.Hash).IsUnique();
+        modelBuilder.Entity<DailyVocabularyWord>().HasIndex(x => x.Word).IsUnique();
+        modelBuilder.Entity<DailyVocabularyWord>().HasIndex(x => x.GeneratedOnDate);
         base.OnModelCreating(modelBuilder);
     }
 }
