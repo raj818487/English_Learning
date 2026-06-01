@@ -1,0 +1,15 @@
+@import '../../../../../styles/design-tokens.scss';
+
+.auth-page {
+  padding: $space-section-vertical 0;
+
+  .auth-title { @include cal-hero-heading; font-size: 32px; margin-bottom: $space-3; }
+
+  form { max-width: 420px; }
+
+  .field { margin-bottom: $space-3; label { display:block; margin-bottom: 6px; color: $color-mid-gray; } input { width:100%; padding:10px; border-radius:$radius-sm; border:1px solid rgba(0,0,0,0.08); } .error { color: red; font-size:12px; margin-top:4px; } }
+
+  .actions { margin-top: $space-3; button { background:$color-charcoal; color:$color-white; padding:10px 16px; border-radius:6px; border:none; } }
+
+  .error-message { color: red; margin-top: $space-3; }
+}

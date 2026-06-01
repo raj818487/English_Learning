@@ -1,0 +1,11 @@
+@import '../../../../../styles/design-tokens.scss';
+
+.content-page {
+  padding: $space-section-vertical 0;
+
+  .page-title { @include cal-hero-heading; font-size: 32px; margin-bottom: $space-3; }
+
+  .search { display:flex; gap: $space-2; margin-bottom: $space-3; input { flex:1; padding:10px; border-radius:$radius-sm; border:1px solid rgba(0,0,0,0.06);} button { background:$color-charcoal; color:$color-white; padding:8px 12px; border-radius:6px; border:none; } }
+
+  ul { list-style:none; padding:0; li { padding:$space-3 0; border-bottom:1px solid rgba(0,0,0,0.04); .content-title { font-family:$font-display; font-size:16px; color:$color-charcoal; } .content-meta { @include cal-body; font-size:13px; color:$color-mid-gray; margin-top:6px;} } }
+}

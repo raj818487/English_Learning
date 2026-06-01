@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers(options => options.Filters.Add<ApiExceptionFilter>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -47,6 +47,17 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     await SeedData.InitializeAsync(db);
+
+    // Ensure an admin user exists using the IUserService to correctly hash passwords
+    var userService = scope.ServiceProvider.GetService<EnglishLearning.Application.Interfaces.IUserService>();
+    if (userService is not null)
+    {
+        var existing = await userService.GetByEmailAsync("admin@local");
+        if (existing is null)
+        {
+            await userService.CreateAsync("admin@local", "Admin123!", "Admin");
+        }
+    }
 }
 
 app.UseHttpsRedirection();

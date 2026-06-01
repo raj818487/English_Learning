@@ -1,0 +1,17 @@
+<div class="content-page container">
+  <h2 class="page-title">Content Management</h2>
+
+  <div class="search">
+    <input #q type="search" placeholder="Search content" (keyup.enter)="load(q.value)" />
+    <button (click)="load((q as HTMLInputElement).value)">Search</button>
+  </div>
+
+  <div *ngIf="loading">Searching…</div>
+
+  <ul *ngIf="!loading">
+    <li *ngFor="let c of contents">
+      <div class="content-title">{{ c.title || c.heading || 'Untitled' }}</div>
+      <div class="content-meta">{{ c.type || c.contentType }} • {{ c.language || 'en' }}</div>
+    </li>
+  </ul>
+</div>

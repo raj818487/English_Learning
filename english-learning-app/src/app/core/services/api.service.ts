@@ -12,4 +12,12 @@ export class ApiService {
   post<T>(url: string, body: unknown) {
     return this.http.post<T>(url, body);
   }
+
+  put<T>(url: string, body: unknown) {
+    return this.http.put<T>(url, body);
+  }
+
+  delete<T>(url: string) {
+    return this.http.delete<T>(url);
+  }
 }

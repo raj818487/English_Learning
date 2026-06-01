@@ -1,0 +1,9 @@
+<div class="topics-page container">
+  <h2 class="page-title">Topics</h2>
+
+  <div *ngIf="loading">Loading topics…</div>
+
+  <ul *ngIf="!loading">
+    <li *ngFor="let t of topics">{{ t.title || t.name || 'Untitled' }}</li>
+  </ul>
+</div>

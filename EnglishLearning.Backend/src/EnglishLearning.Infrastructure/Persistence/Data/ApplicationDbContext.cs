@@ -15,6 +15,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
     public DbSet<ConversationScenario> ConversationScenarios => Set<ConversationScenario>();
     public DbSet<UserProgress> UserProgresses => Set<UserProgress>();
     public DbSet<ContentHash> ContentHashes => Set<ContentHash>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

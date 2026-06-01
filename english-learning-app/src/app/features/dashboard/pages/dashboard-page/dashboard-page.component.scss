@@ -1,0 +1,30 @@
+@import '../../../../../styles/design-tokens.scss';
+
+.dashboard-hero {
+  padding: $space-section-vertical 0;
+  background: $color-white;
+
+  .hero-title {
+    @include cal-hero-heading;
+    margin: 0 0 $space-4 0;
+  }
+
+  .hero-sub { @include cal-body; margin-bottom: $space-5; }
+
+  .stats { display: flex; gap: $space-4; }
+
+  .stat-card {
+    background: $color-white;
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    box-shadow: $shadow-level-2;
+    min-width: 160px;
+
+    .stat-value { font-family: $font-display; font-size: 32px; color: $color-charcoal; }
+    .stat-label { @include cal-body; font-size: 14px; color: $color-mid-gray; }
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .dashboard-hero { padding: 48px 0; .hero-title { font-size: 36px; } .stats { flex-direction: column; } }
+}

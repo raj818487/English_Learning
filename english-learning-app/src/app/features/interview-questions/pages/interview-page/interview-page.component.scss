@@ -1,0 +1,3 @@
+@import '../../../../../styles/design-tokens.scss';
+
+.interview-page { padding: $space-section-vertical 0; .page-title { @include cal-hero-heading; font-size: 32px; margin-bottom: $space-3; } ul { list-style:none; padding:0; li { padding:$space-3 0; border-bottom:1px solid rgba(0,0,0,0.04); .hint { @include cal-body; color:$color-mid-gray; margin-top:6px; } } } }

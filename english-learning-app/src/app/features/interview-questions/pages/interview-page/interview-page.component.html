@@ -1,0 +1,28 @@
+<div class="interview-page container">
+  <h2 class="page-title">Interview Questions</h2>
+
+  <div *ngIf="loading">Loading…</div>
+
+  <div *ngIf="!loading">
+    <ul>
+      <li *ngFor="let i of interviews">
+        <strong>{{ i.question || i.title }}</strong>
+        <p class="hint">{{ i.answer ? (i.answer | slice:0:140) : '' }}</p>
+        <div *ngIf="isAdmin" class="admin-actions">
+          <button (click)="edit(i.id)">Edit</button>
+          <button (click)="remove(i.id)">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <div *ngIf="isAdmin" class="create-form">
+      <h3>Create New Question</h3>
+      <form (ngSubmit)="create()">
+        <input placeholder="Title" [formControl]="form.controls.title" />
+        <textarea placeholder="Text" [formControl]="form.controls.text"></textarea>
+        <textarea placeholder="Suggested answer" [formControl]="form.controls.suggestedAnswer"></textarea>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

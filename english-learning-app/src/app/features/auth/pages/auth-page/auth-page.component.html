@@ -1,0 +1,23 @@
+<div class="auth-page container">
+  <h2 class="auth-title">Sign in</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" formControlName="email" />
+      <div class="error" *ngIf="form.controls.email.invalid && form.controls.email.touched">Valid email required</div>
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" formControlName="password" />
+      <div class="error" *ngIf="form.controls.password.invalid && form.controls.password.touched">Password required (min 6)</div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="loading">{{ loading ? 'Signing in…' : 'Sign in' }}</button>
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </form>
+</div>

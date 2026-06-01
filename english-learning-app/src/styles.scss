@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/design-tokens.scss';
+
+html, body {
+	height: 100%;
+	margin: 0;
+	background: $color-white;
+	color: $color-charcoal;
+	font-family: $font-body;
+}
+
+a { color: $color-link-blue; }
+
+/* Simple container */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-left: $space-4;
+	padding-right: $space-4;
+}
+
